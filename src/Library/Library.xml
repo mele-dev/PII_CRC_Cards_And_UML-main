@@ -1,0 +1,282 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Library</name>
+    </assembly>
+    <members>
+        <member name="T:CrcCards.BarcodeReading">
+            <summary>
+            Representa la lectura del escáner compuesta por el código del producto leído y la cantidad de ese producto.
+            </summary>
+        </member>
+        <member name="M:CrcCards.BarcodeReading.#ctor(System.Int32,System.Double)">
+            <summary>
+            Inicializa una nueva instancia de la clase BarcodeReading.
+            </summary>
+            <param name="productCode">El valor inicial del código del producto leído.</param>
+            <param name="quantity">La cantidad inicial del producto leída.</param>
+        </member>
+        <member name="P:CrcCards.BarcodeReading.ProductCode">
+            <summary>
+            Obtiene o establece el código del producto leído.
+            </summary>
+            <value>El código del producto leído.</value>
+        </member>
+        <member name="P:CrcCards.BarcodeReading.Quantity">
+            <summary>
+            Obtiene o establece la cantidad del producto leída.
+            </summary>
+            <value>La cantidad del producto leída.</value>
+        </member>
+        <member name="T:CrcCards.CashRegister">
+            <summary>
+            Representa una caja registradora.
+            </summary>
+        </member>
+        <member name="M:CrcCards.CashRegister.#ctor(CrcCards.ProductCatalog)">
+            <summary>
+            Inicializa una nueva instancia de la clase CashRegister con el catálogo de producto que se recibe como argumento.
+            </summary>
+            <param name="productCatalog">El catálogo de productos a usar.</param>
+        </member>
+        <member name="M:CrcCards.CashRegister.StartSale">
+            <summary>
+            Comienza una venta.
+            </summary>
+        </member>
+        <member name="M:CrcCards.CashRegister.EndSale">
+            <summary>
+            Termina la venta en curso.
+            </summary>
+        </member>
+        <member name="M:CrcCards.CashRegister.PrintTicket">
+            <summary>
+            Imprime el ticket de la venta en curso.
+            </summary>
+        </member>
+        <member name="M:CrcCards.CashRegister.BarcodeRead(CrcCards.BarcodeReading)">
+            <summary>
+            Procesa la lectura de un código de barras.
+            </summary>
+            <param name="reading">El código de barras leído.</param>
+        </member>
+        <member name="T:CrcCards.Keyboard">
+            <summary>
+            Representa el teclado de la caja registradora.
+            </summary>
+        </member>
+        <member name="M:CrcCards.Keyboard.#ctor(CrcCards.SaleCoordinator)">
+            <summary>
+            Inicializa una nueva instancia de la clase Keyboard con el coordinador de venta que se recibe como argumento. El
+            teclado enviará eventos a este coordinador de venta cuando se opriman sus teclas.
+            </summary>
+            <param name="coordinator">El coordinador de venta.</param>
+        </member>
+        <member name="M:CrcCards.Keyboard.OnSaleStart">
+            <summary>
+            Este evento representa el inicio de una venta que ocurre al oprimir la tecla correspondiente. El evento se
+            procesa enviándolo al coordinador de la venta.
+            </summary>
+        </member>
+        <member name="M:CrcCards.Keyboard.OnSaleEnd">
+            <summary>
+            Este evento representa el final de una venta que ocurre al oprimir la tecla correspondiente. El evento se
+            procesa enviándolo al coordinador de la venta.
+            </summary>
+        </member>
+        <member name="T:CrcCards.Printer">
+            <summary>
+            Representa una impresora de tickets.
+            </summary>
+        </member>
+        <member name="M:CrcCards.Printer.PrintTicket(CrcCards.SaleTicket)">
+            <summary>
+            Imprime por console el ticket que se recibe como argumento.
+            </summary>
+            <param name="ticket">El ticket a imprimir.</param>
+        </member>
+        <member name="T:CrcCards.ProductCatalog">
+            <summary>
+            Representa el catálogo de productos que se vende.
+            </summary>
+        </member>
+        <member name="M:CrcCards.ProductCatalog.AddProduct(CrcCards.ProductSpecification)">
+            <summary>
+            Agrega un nuevo producto al catálogo.
+            </summary>
+            <param name="product">El producto a agregar.</param>
+        </member>
+        <member name="M:CrcCards.ProductCatalog.FindProduct(System.Int32)">
+            <summary>
+            Retorna el producto cuyo código coincide con el que se recibe como argumento, o <c>null</c> si no existe
+            ese producto.
+            </summary>
+            <param name="searchCode">El código del producto buscado.</param>
+            <returns>El producto cuyo código coincide con el que se recibe como argumento, o <c>null</c> si no existe
+            un producto con ese código.</returns>
+        </member>
+        <member name="T:CrcCards.ProductSpecification">
+            <summary>
+            Representa un producto.
+            </summary>
+        </member>
+        <member name="M:CrcCards.ProductSpecification.#ctor(System.Int32,System.String,System.Double)">
+            <summary>
+            Crea una nueva instancia de la clase ProductoSpecification con los valores que se reciben como argumento.
+            </summary>
+            <param name="code">El código del producto.</param>
+            <param name="description">La descripción del producto.</param>
+            <param name="price">El precio del producto.</param>
+        </member>
+        <member name="P:CrcCards.ProductSpecification.Code">
+            <summary>
+            Obtiene o establece el código del producto.
+            </summary>
+            <value>El código del producto.</value>
+        </member>
+        <member name="P:CrcCards.ProductSpecification.Description">
+            <summary>
+            Obtiene o establece la descripción del producto.
+            </summary>
+            <value>La descripción del producto.</value>
+        </member>
+        <member name="P:CrcCards.ProductSpecification.Price">
+            <summary>
+            Obtiene o establece el precio del producto.
+            </summary>
+            <value>El precio del producto.</value>
+        </member>
+        <member name="T:CrcCards.SaleCoordinator">
+            <summary>
+            Representa el coordinador de una venta. El coordinador recibe eventos desde el teclado o el escáner y los envía a la
+            caja registradora.
+            </summary>
+        </member>
+        <member name="M:CrcCards.SaleCoordinator.#ctor(CrcCards.ProductCatalog)">
+            <summary>
+            Inicializa una nueva instancia de la clase CashRegister creando su teclado y su escáner.
+            </summary>
+            <param name="productCatalog">El catálogo de productos.</param>
+        </member>
+        <member name="P:CrcCards.SaleCoordinator.Keyboard">
+            <summary>
+            Obtiene el teclado. El teclado puede ser usado para iniciar o terminar una venta.
+            </summary>
+            <value>El teclado.</value>
+        </member>
+        <member name="P:CrcCards.SaleCoordinator.Scanner">
+            <summary>
+            Obtiene el escáner de códigos de barra. El escáner puede ser usado para agregar productos al ticket de venta.
+            </summary>
+            <value>El escáner.</value>
+        </member>
+        <member name="M:CrcCards.SaleCoordinator.StartSale">
+            <summary>
+            Inicia una venta.
+            </summary>
+        </member>
+        <member name="M:CrcCards.SaleCoordinator.EndSale">
+            <summary>
+            Termina una venta.
+            </summary>
+        </member>
+        <member name="M:CrcCards.SaleCoordinator.BarcodeRead(CrcCards.BarcodeReading)">
+            <summary>
+            Responde al evento de una nueva lectura de un código de barras.
+            </summary>
+            <param name="reading">El código de barras leído.</param>
+        </member>
+        <member name="T:CrcCards.SaleTicket">
+            <summary>
+            Representa un ticket de venta.
+            </summary>
+        </member>
+        <member name="P:CrcCards.SaleTicket.DateTime">
+            <summary>
+            Obtiene o establece la fecha de la venta.
+            </summary>
+            <value>La fecha de la venta.</value>
+        </member>
+        <member name="M:CrcCards.SaleTicket.GetTotal">
+            <summary>
+            Obtiene el total del ticket que se calcula como la suma del precio del producto multiplicado por la cantidad de
+            ese producto para todas las líneas del ticket de venta.
+            </summary>
+            <returns>El total del ticket.</returns>
+        </member>
+        <member name="M:CrcCards.SaleTicket.AddLineItem(CrcCards.TicketLineItem)">
+            <summary>
+            Agrega al ticket la línea que se recibe como argumento.
+            </summary>
+            <param name="item">La línea a agregar.</param>
+        </member>
+        <member name="M:CrcCards.SaleTicket.RemoveLineItem(CrcCards.TicketLineItem)">
+            <summary>
+            Quita del ticket la línea que se recibe como argumento.
+            </summary>
+            <param name="item">La línea a remover.</param>
+        </member>
+        <member name="M:CrcCards.SaleTicket.GetTicketText">
+            <summary>
+            Retorna el texto del ticket a imprimir.
+            </summary>
+            <returns>El texto del ticket a imprimir.</returns>
+        </member>
+        <member name="T:CrcCards.Scanner">
+            <summary>
+            Representa un escáner de códigos de barras.
+            </summary>
+        </member>
+        <member name="M:CrcCards.Scanner.#ctor(CrcCards.SaleCoordinator)">
+            <summary>
+            Inicializa una nueva instancia de la clase Scanner con el coordinador de venta que se recibe como argumento. El
+            escáner enviará eventos a este coordinador de venta cuando se lean códigos de barras.
+            </summary>
+            <param name="coordinator">El coordinador de venta.</param>
+        </member>
+        <member name="M:CrcCards.Scanner.OnBarcodeRead(CrcCards.BarcodeReading)">
+            <summary>
+            Este evento representa la lectura del código de barras que se recibe como argumento. El evento se procesa
+            enviándolo al controlador de la venta.
+            </summary>
+            <param name="reading">El código de barras leído.</param>
+        </member>
+        <member name="T:CrcCards.TicketLineItem">
+            <summary>
+            Representa una línea de un ticket de venta.
+            </summary>
+        </member>
+        <member name="M:CrcCards.TicketLineItem.#ctor(System.Double,CrcCards.ProductSpecification)">
+            <summary>
+            Inicializa una nueva instancia de la clase TicketLineItem con la cantidad y el producto que se reciben como
+            argumento.
+            </summary>
+            <param name="quantity">La cantidad del producto.</param>
+            <param name="product">El producto.</param>
+        </member>
+        <member name="P:CrcCards.TicketLineItem.Quantity">
+            <summary>
+            Obtiene o establece la cantidad del producto.
+            </summary>
+            <value>La cantidad del producto.</value>
+        </member>
+        <member name="P:CrcCards.TicketLineItem.Product">
+            <summary>
+            Obtiene o establece el producto.
+            </summary>
+            <value>El producto.</value>
+        </member>
+        <member name="P:CrcCards.TicketLineItem.SubTotal">
+            <summary>
+            Obtiene el subtotal de la línea multiplicando la cantidad por el precio del producto.
+            </summary>
+            <value>El subtotal de la línea.</value>
+        </member>
+        <member name="M:CrcCards.TicketLineItem.GetLineText">
+            <summary>
+            Obtiene el texto de la linea para imprimir.
+            </summary>
+            <returns>El texto de la línea.</returns>
+        </member>
+    </members>
+</doc>

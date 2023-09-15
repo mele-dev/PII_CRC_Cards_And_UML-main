@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Program</name>
+    </assembly>
+    <members>
+        <member name="T:CrcCards.Program">
+            <summary>
+            El programa principal.
+            </summary>
+        </member>
+        <member name="M:CrcCards.Program.Main">
+            <summary>
+            El punto de entrada al programa principal.
+            </summary>
+        </member>
+    </members>
+</doc>
