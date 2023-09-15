@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "/QpUGPsVMkdozDc5QUCRNHUiaZZMyriaqJ/9c2gzmPpB9cKSOqBKJcB3VybegJxE+a0RvoJPUYrXoZWMyHtHZQ==",
+  "success": true,
+  "projectFilePath": "c:\\Users\\juana\\prog_dos\\PII_CRC_Cards_And_UML-main\\src\\Library\\Library.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\juana\\.nuget\\packages\\stylecop.analyzers\\1.1.118\\stylecop.analyzers.1.1.118.nupkg.sha512"
+  ],
+  "logs": []
+}
